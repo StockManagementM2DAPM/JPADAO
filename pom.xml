@@ -7,6 +7,7 @@
     <groupId>fr.univtln.m2dapm.stockmanagement</groupId>
     <artifactId>ParentPOM</artifactId>
     <version>0.1</version>
+    <relativePath>../ParentPOM/</relativePath>
   </parent>
 
   <artifactId>JPADAO</artifactId>
