@@ -1,15 +1,26 @@
 package fr.univtln.m2dapm.stockmanagement;
 
-import junit.framework.Test;
+import fr.univtln.m2dapm.stockmanagement.dao.classes.TeacherDAOJPA;
+import fr.univtln.m2dapm.stockmanagement.dao.exceptions.DAOException;
+import fr.univtln.m2dapm.stockmanagement.dao.interfaces.ITeacherDAO;
+import fr.univtln.m2dapm.stockmanagement.entities.classes.actors.Teacher;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-    extends TestCase
+public class AppTest extends TestCase
 {
+
+    public static EntityManagerFactory EMF;
+    private EntityManager em;
+    private EntityTransaction transac;
+
     /**
      * Create the test case
      *
@@ -20,19 +31,26 @@ public class AppTest
         super( testName );
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+
+    @org.junit.Test
+    public void testApp() throws DAOException {
+        EMF = Persistence
+                .createEntityManagerFactory("hibernate-h2-stock");
+
+        em = EMF.createEntityManager();
+        transac = em.getTransaction();
+
+        ITeacherDAO teacherDAO = new TeacherDAOJPA(em);
+
+        transac.begin();
+
+        teacherDAO.add(new Teacher.Builder()
+                .setFirstName("Mourad")
+                .setLastName("Beau gosse")
+                .build());
+        transac.commit();
+
+
     }
 }
