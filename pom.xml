@@ -4,9 +4,9 @@
 
 
   <parent>
-    <groupId>fr.univtln.m2dapm.stockmanagement</groupId>
-    <artifactId>ParentPOM</artifactId>
-    <version>0.1</version>
+    <groupId>fr.univtln.m2dapm.stock</groupId>
+    <artifactId>StockManagement</artifactId>
+    <version>1.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>JPADAO</artifactId>
@@ -22,7 +22,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>fr.univtln.m2dapm.stockmanagement</groupId>
+      <groupId>fr.univtln.m2dapm.stock</groupId>
       <artifactId>JPAEntities</artifactId>
       <version>0.1-SNAPSHOT</version>
     </dependency>
